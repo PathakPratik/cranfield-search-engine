@@ -23,7 +23,7 @@
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.ie.cranfield.SearchEngine</mainClass>
+                                    <mainClass>com.ir.cranfield.SearchEngine</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
