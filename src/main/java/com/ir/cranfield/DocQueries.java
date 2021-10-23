@@ -19,7 +19,7 @@ public class DocQueries {
     public void QueryDocuments(Analyzer analyzer) throws Exception {
         IndexSearcher searcher = createSearcher();
 
-        File fout = new File("../CranfieldCollection/result-file"+analyzer);
+        File fout = new File("CranfieldCollection/result-file"+analyzer);
         FileOutputStream fos = new FileOutputStream(fout);
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
