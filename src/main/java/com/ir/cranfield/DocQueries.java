@@ -19,7 +19,7 @@ public class DocQueries {
     public void QueryDocuments(Analyzer analyzer) throws Exception {
         IndexSearcher searcher = createSearcher();
 
-        File fout = new File("../CranfieldCollection/result-file");
+        File fout = new File("../CranfieldCollection/result-file"+analyzer);
         FileOutputStream fos = new FileOutputStream(fout);
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
@@ -58,8 +58,9 @@ public class DocQueries {
     {
         QueryParser qp = new QueryParser("content", analyzer);
         qp.setAllowLeadingWildcard(true);
-        String special = "title:" + term + " OR content:" + term;
-        Query idQuery = qp.parse(special);
+//        String special = "title:" + term + " OR content:" + term;
+//        Query idQuery = qp.parse(special);
+        Query idQuery = qp.parse(qp.parse("content").toString());
         TopDocs hits = searcher.search(idQuery, 50);
         return hits;
     }

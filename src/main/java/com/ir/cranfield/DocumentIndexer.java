@@ -7,7 +7,6 @@ import org.apache.lucene.store.FSDirectory;
 
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
-import org.apache.lucene.document.StringField;
 import org.apache.lucene.document.TextField;
 
 import java.io.IOException;

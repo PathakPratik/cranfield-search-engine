@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 public class CranfieldDocs {
     public static ArrayList<Map<String, String>> getDocuments() throws FileNotFoundException {
 
-        Scanner scan = new Scanner(new File("../CranfieldCollection/cran.all.1400"));
+        Scanner scan = new Scanner(CranfieldDocs.class.getResourceAsStream("/CranfieldCollection/cran.all.1400"));
 
         ArrayList<Map<String, String>> docs = new ArrayList<>();
 
@@ -49,7 +49,7 @@ public class CranfieldDocs {
 
     public static ArrayList<Map<String, String>> getQueries() throws FileNotFoundException {
 
-        Scanner scan = new Scanner(new File("../CranfieldCollection/cran.qry"));
+        Scanner scan = new Scanner(CranfieldDocs.class.getResourceAsStream("/CranfieldCollection/cran.all.1400"));
 
         ArrayList<Map<String, String>> queries = new ArrayList<>();
 
