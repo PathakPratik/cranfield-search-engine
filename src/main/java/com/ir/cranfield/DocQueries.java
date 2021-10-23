@@ -4,10 +4,7 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryparser.classic.QueryParser;
-import org.apache.lucene.search.IndexSearcher;
-import org.apache.lucene.search.Query;
-import org.apache.lucene.search.ScoreDoc;
-import org.apache.lucene.search.TopDocs;
+import org.apache.lucene.search.*;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
@@ -59,10 +56,15 @@ public class DocQueries {
     {
         QueryParser qp = new QueryParser("content", analyzer);
         qp.setAllowLeadingWildcard(true);
+        BooleanQuery booleanQuery = new BooleanQuery.Builder()
+                .add(qp.parse("content"), BooleanClause.Occur.SHOULD)
+                .add(qp.parse("title"), BooleanClause.Occur.SHOULD)
+                .build();
 //        String special = "title:" + term + " OR content:" + term;
 //        Query idQuery = qp.parse(special);
-        Query idQuery = qp.parse(qp.parse("content").toString());
-        TopDocs hits = searcher.search(idQuery, 50);
+//        Query idQuery = qp.parse(qp.parse("content").toString());
+        TopDocs hits = searcher.search(booleanQuery, 50);
+        System.out.println(hits);
         return hits;
     }
 }
