@@ -3,6 +3,7 @@ package com.ir.cranfield;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.search.similarities.ClassicSimilarity;
 import org.apache.lucene.store.FSDirectory;
 
 import org.apache.lucene.document.Document;
@@ -41,6 +42,7 @@ public class DocumentIndexer {
         FSDirectory dir = FSDirectory.open(Paths.get(SearchEngine.INDEX_DIR));
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
         config.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
+        config.setSimilarity(new ClassicSimilarity());
         IndexWriter writer = new IndexWriter(dir, config);
         return writer;
     }
