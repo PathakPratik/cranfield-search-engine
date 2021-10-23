@@ -21,6 +21,8 @@ public class DocumentIndexer {
         IndexWriter writer = createWriter(analyzer);
         List<Document> documents = new ArrayList<>();
 
+        String AnalyzerName = analyzer.getClass().getName().substring(analyzer.getClass().getName().lastIndexOf('.') + 1);
+
         for (Map doc: CranfieldDocs.getDocuments()) {
             Document document = createDocument(doc);
             documents.add(document);
@@ -32,7 +34,7 @@ public class DocumentIndexer {
         writer.commit();
         writer.close();
 
-        System.out.println("Index Created");
+        System.out.println(AnalyzerName + " - Index Created");
     }
 
     private static IndexWriter createWriter(Analyzer analyzer) throws IOException {
