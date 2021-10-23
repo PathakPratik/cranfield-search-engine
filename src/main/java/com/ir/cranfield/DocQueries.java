@@ -8,6 +8,7 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
+import org.apache.lucene.search.similarities.ClassicSimilarity;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
@@ -53,6 +54,7 @@ public class DocQueries {
         Directory dir = FSDirectory.open(Paths.get(SearchEngine.INDEX_DIR));
         IndexReader reader = DirectoryReader.open(dir);
         IndexSearcher searcher = new IndexSearcher(reader);
+        searcher.setSimilarity(new ClassicSimilarity());
         return searcher;
     }
 
