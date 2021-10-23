@@ -19,7 +19,9 @@ public class DocQueries {
     public void QueryDocuments(Analyzer analyzer) throws Exception {
         IndexSearcher searcher = createSearcher();
 
-        File fout = new File("../CranfieldCollection/result-file"+analyzer);
+        String AnalyzerName = analyzer.getClass().getName().substring(analyzer.getClass().getName().lastIndexOf('.') + 1);
+
+        File fout = new File("../CranfieldCollection/Result-File-"+AnalyzerName);
         FileOutputStream fos = new FileOutputStream(fout);
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
@@ -33,7 +35,7 @@ public class DocQueries {
 
             Integer rank = 1;
             for (ScoreDoc sd : results.scoreDocs) {
-                resultLine += queryID + " " + "Q0 " + (sd.doc + 1) + " " + rank +" " + sd.score + " " + analyzer + "\n";
+                resultLine += queryID + " " + "Q0 " + (sd.doc + 1) + " " + rank +" " + sd.score + " " + AnalyzerName + "\n";
                 rank++;
             }
 

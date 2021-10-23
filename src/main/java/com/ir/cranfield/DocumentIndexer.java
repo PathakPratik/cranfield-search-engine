@@ -7,7 +7,6 @@ import org.apache.lucene.store.FSDirectory;
 
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
-import org.apache.lucene.document.StringField;
 import org.apache.lucene.document.TextField;
 
 import java.io.IOException;
@@ -39,7 +38,7 @@ public class DocumentIndexer {
     private static IndexWriter createWriter(Analyzer analyzer) throws IOException {
         FSDirectory dir = FSDirectory.open(Paths.get(SearchEngine.INDEX_DIR));
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
-
+        config.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
         IndexWriter writer = new IndexWriter(dir, config);
         return writer;
     }
