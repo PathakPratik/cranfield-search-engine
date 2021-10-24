@@ -54,7 +54,7 @@ public class DocQueries {
         Directory dir = FSDirectory.open(Paths.get(SearchEngine.INDEX_DIR));
         IndexReader reader = DirectoryReader.open(dir);
         IndexSearcher searcher = new IndexSearcher(reader);
-//        searcher.setSimilarity(new ClassicSimilarity());
+        searcher.setSimilarity(new ClassicSimilarity());
         return searcher;
     }
 
