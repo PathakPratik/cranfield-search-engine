@@ -42,7 +42,7 @@ public class DocumentIndexer {
         FSDirectory dir = FSDirectory.open(Paths.get(SearchEngine.INDEX_DIR));
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
         config.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
-        config.setSimilarity(new ClassicSimilarity());
+//        config.setSimilarity(new ClassicSimilarity());
         IndexWriter writer = new IndexWriter(dir, config);
         return writer;
     }
